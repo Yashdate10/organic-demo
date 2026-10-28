@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Organic Farming Demo Plot</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div id="progress"></div>
+<header class="nav">
+  <span class="brand">🌱 Demo Plot</span>
+  <button id="theme" aria-label="Toggle theme">◐</button>
+</header>
+
+<main>
+<section class="wrap hero">
+  <p class="eyebrow reveal">Organic farming demonstration</p>
+  <h1 class="reveal" style="--d:.1s">Healthy soil grows <em>healthy profit.</em></h1>
+  <p class="lead reveal" style="--d:.2s">We partnered with a local farmer, set aside one small plot, and grew it the natural way. Scroll to see how it works, then check the real numbers.</p>
+  <div class="reveal" style="--d:.3s"><a class="btn" href="#soil">See how it works ↓</a> <a class="btn ghost" href="#results">Jump to results</a></div>
+  <div class="grid3 stats">
+    <div class="card reveal"><b class="count" data-to="90">0</b><span>days to ready compost</span></div>
+    <div class="card reveal" style="--d:.1s"><b class="count" data-to="4">0</b><span>seasons in the rotation</span></div>
+    <div class="card reveal" style="--d:.2s"><b class="count" data-to="0">0</b><span>chemical sprays used</span></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <h2 class="reveal">Three simple ideas</h2>
+  <div class="grid3">
+    <div class="card reveal"><h3>🪱 Feed the soil</h3><p>Compost brings life back to the soil. Healthy soil feeds the plant, so you buy less fertiliser.</p></div>
+    <div class="card reveal" style="--d:.1s"><h3>🐞 Protect naturally</h3><p>Neem, traps and friendly insects keep pests down without poison or extra cost.</p></div>
+    <div class="card reveal" style="--d:.2s"><h3>🔄 Rotate crops</h3><p>Changing crops each season breaks pest cycles and refills nutrients for free.</p></div>
+  </div>
+</section>
+
+<section id="soil" class="wrap">
+  <p class="eyebrow">Part 1 · Composting</p>
+  <h2 class="reveal">Build the soil, layer by layer</h2>
+  <p class="lead reveal">Keep scrolling. The heap builds as you read.</p>
+  <div class="scrolly">
+    <div class="sticky">
+      <div class="jar" id="jar">
+        <div class="layer l1">Straw</div><div class="layer l2">Green waste</div>
+        <div class="layer l3">Dung slurry</div><div class="layer l4">Water</div>
+      </div>
+      <p id="jarcap" class="meta">Start scrolling ↓</p>
+    </div>
+    <div id="steps"></div>
+  </div>
+</section>
+
+<section id="pests" class="wrap">
+  <p class="eyebrow">Part 2 · Natural pest control</p>
+  <h2 class="reveal">Four tools, zero poison</h2>
+  <div id="pestTabs" class="chips reveal"></div>
+  <div id="pestPanel" class="card big reveal"></div>
+</section>
+
+<section id="rotation" class="wrap">
+  <p class="eyebrow">Part 3 · Crop rotation</p>
+  <h2 class="reveal">Move the crops, rebuild the soil</h2>
+  <p class="lead reveal">Drag the slider to move through the four seasons. See how each plot changes.</p>
+  <div class="reveal">
+    <input type="range" id="season" min="0" max="3" value="0" aria-label="Season">
+    <p id="seasonLbl" class="meta"></p>
+    <div id="plots" class="plots"></div>
+    <div id="legend" class="grid3"></div>
+  </div>
+</section>
+
+<section id="results" class="wrap">
+  <p class="eyebrow">Part 4 · Results</p>
+  <h2 class="reveal">Yield and cost, side by side</h2>
+  <p class="meta reveal">Sample numbers shown. They are replaced with measured values from the demo plot.</p>
+  <div id="cropTabs" class="chips reveal"></div>
+  <div id="metricTabs" class="chips reveal"></div>
+  <div class="card big" id="resultCard">
+    <div id="bars"></div>
+    <p id="verdict" class="verdict"></p>
+  </div>
+</section>
+
+<section id="tools" class="wrap">
+  <p class="eyebrow">Try it</p>
+  <h2 class="reveal">Plan your own plot</h2>
+  <div class="card big reveal">
+    <div class="row">
+      <select id="estCrop"></select>
+      <input id="estAcres" type="number" min="0.1" step="0.1" value="1" inputmode="decimal" aria-label="Acres">
+      <button id="estBtn" class="btn">Estimate</button>
+    </div>
+    <p id="estOut" class="verdict"></p>
+  </div>
+
+  <h2 class="reveal" style="margin-top:56px">Field journal</h2>
+  <form id="logForm" class="card big reveal">
+    <select name="activity"><option value="compost">🪱 Compost</option><option value="pest">🐞 Pest control</option><option value="rotation">🔄 Rotation</option><option value="harvest">🧺 Harvest</option><option value="other">📝 Other</option></select>
+    <textarea name="note" required maxlength="300" placeholder="What did you do today?" rows="2"></textarea>
+    <div class="row">
+      <input name="cost_inr" type="number" min="0" step="any" placeholder="Cost ₹" inputmode="decimal">
+      <input name="yield_kg" type="number" min="0" step="any" placeholder="Yield kg" inputmode="decimal">
+    </div>
+    <button class="btn" type="submit">Add entry</button>
+  </form>
+  <p id="totals" class="meta"></p>
+  <ul id="logList"></ul>
+</section>
+</main>
+
+<footer class="wrap meta">Built with FastAPI + vanilla JS · Organic Farming Demonstration</footer>
+<script src="/static/app.js"></script>
+</body>
+</html>
